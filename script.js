@@ -78,7 +78,7 @@ const gameOver = () => {
   resultModal.innerHTML = "";
   resultModal.classList.toggle("hidden");
   modalBackground.classList.toggle("hidden");
-  
+
   // clear user text
   display.innerHTML = "";
   // make it inactive
@@ -88,7 +88,7 @@ const gameOver = () => {
     <h1>Finished!</h1>
     <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
     <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
-    <p>Typing Speed: <span class="bold">${typingSpeed}</span> per minute</p>
+    <p>Typing Speed: <span class="bold green">${typingSpeed}</span> per minute</p>
     <button onclick="closeModal()">Close</button>
   `;
 
