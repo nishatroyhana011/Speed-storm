@@ -10,6 +10,7 @@ let userText = "";
 let errorCount = 0;
 let startTime;
 let questionText = "";
+let totalText = 0;
 
 // Load and display question
 fetch("./texts.json")
@@ -52,6 +53,7 @@ const typeController = (e) => {
 
   // check if given question text is equal to user typed text
   if (questionText === userText) {
+    totalText = userText.length + errorCount;
     gameOver();
   }
 };
@@ -70,11 +72,13 @@ const gameOver = () => {
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
   const timeTaken = (finishTime - startTime) / 1000 | 0;
+  const typingSpeed = Math.floor((totalText / timeTaken) * 60);
 
   // show result modal
   resultModal.innerHTML = "";
   resultModal.classList.toggle("hidden");
   modalBackground.classList.toggle("hidden");
+  
   // clear user text
   display.innerHTML = "";
   // make it inactive
@@ -84,6 +88,7 @@ const gameOver = () => {
     <h1>Finished!</h1>
     <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
     <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
+    <p>Typing Speed: <span class="bold">${typingSpeed}</span> per minute</p>
     <button onclick="closeModal()">Close</button>
   `;
 
